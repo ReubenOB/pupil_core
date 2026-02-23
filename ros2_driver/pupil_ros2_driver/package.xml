@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>pupil_ros2_driver</name>
+  <version>0.1.0</version>
+  <description>
+    ROS 2 driver for the Pupil Core open-source eye-tracking platform.
+
+    Provides three nodes:
+      camera_node        — streams the world camera and both eye cameras as
+                           sensor_msgs/Image topics by connecting to Pupil
+                           Capture / Service over the ZeroMQ Network API.
+      gaze_node          — publishes raw pupil detections and mapped gaze data
+                           received from Pupil Capture / Service.
+      eye_tracking_node  — subscribes to the raw eye-camera Image topics and
+                           runs a standalone online pupil-detection and gaze-
+                           estimation pipeline entirely within ROS 2.
+  </description>
+  <maintainer email="maintainer@example.com">Pupil ROS2 Driver Maintainer</maintainer>
+  <license>MIT</license>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>pupil_ros2_msgs</depend>
+
+  <exec_depend>python3-zmq</exec_depend>
+  <exec_depend>python3-msgpack</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
